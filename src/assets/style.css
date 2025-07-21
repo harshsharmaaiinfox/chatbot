@@ -1,45 +1,45 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Preahvihear&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sora:wght@100..800&display=swap');
-* {
-    font-family: "Poppins", sans-serif;
 
+/* Mobile viewport height fix */
+:root {
+  --vh: 1vh;
 }
 
-.bard-chat-wrapper {
-  height: 100vh;
+/* Prevent zoom on input focus on mobile */
+@media screen and (max-width: 600px) {
+  input[type="text"], input[type="email"], input[type="password"], textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+}
+
+/* Chat Screen Layout */
+.chat-screen {
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
   background: #fff;
 }
 
-.bard-chat-body {
-  flex: 1;
-  padding: 40px 0px;
-  overflow-y: auto;
+.intro-screen {
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-
-
-
-.intro-text {
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 20px;
-  color: #111827;
-}
-
-
-
-
-.input-icons {
-  display: flex;
-  gap: 10px;
+  justify-content: center;
   align-items: center;
-  font-size: 16px;
 }
+
 .chat-body {
     flex: 1;
     padding: 40px 0px;
@@ -51,19 +51,21 @@
     gap: 20px;
 }
 
-
 .chat-body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
-
+/* Messages */
 .chat-msg {
-  max-width: 60%;
+  max-width: 90%;
   padding: 14px 18px;
   font-size: 15px;
   line-height: 1.6;
   border-radius: 20px;
   word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 .chat-msg.user {
@@ -72,57 +74,17 @@
   color: #111;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Preahvihear&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sora:wght@100..800&display=swap');
-* {
-    font-family: "Poppins", sans-serif;
-
+.chat-msg.bot {
+  align-self: flex-start;
+  background: transparent;
+  color: #0c4a6e;
 }
 
-.bard-chat-wrapper {
-   height: calc(var(--vh, 1vh) * 100);
-  display: flex;
-  flex-direction: column;
-  background: #fff;
+.chat-msg .bot {
+  background-color: transparent !important;
 }
 
-.bard-chat-body {
-  flex: 1;
-  padding: 40px 0px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-
-.intro-screen {
-  height: calc(var(--vh, 1vh) * 100);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.chat-screen {
-height: calc(var(--vh, 1vh) * 100);
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-}
-body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    
-    justify-content: center;
-}
-
-.intro-text {
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 20px;
-  color: #111827;
-}
-
+/* Input Bar */
 .input-bar {
   display: flex;
   align-items: center;
@@ -133,14 +95,6 @@ body {
   width: 600px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.05);
   margin: 0 auto 30px;
-}
-
-button:hover {
-    border-color: transparent;
-}
-
-button:focus, button:focus-visible {
-    outline:none;
 }
 
 .input-bar input {
@@ -159,114 +113,80 @@ button:focus, button:focus-visible {
   font-size: 16px;
 }
 
+.input-icons button {
+    background: transparent !important;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
 
-p{
+.input-icons button:hover {
+    background: rgba(0, 123, 255, 0.1) !important;
+}
+
+.input-icons button:active {
+    background: rgba(0, 123, 255, 0.2) !important;
+}
+
+.input-icons i {
+    font-size: 16px;
+    display: inline-block;
+    visibility: visible;
+}
+
+/* Example Question */
+.example-question {
+  text-align: center;
+  margin-top: 20px;
+  padding: 0 20px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.example-question span {
+  display: block;
+}
+
+/* Intro Text */
+.intro-text {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+/* Button Styles */
+button:hover {
+    border-color: transparent;
+}
+
+button:focus, button:focus-visible {
+    outline: none;
+}
+
+/* Text Elements */
+p {
   margin: 0;
   color: #000;
   padding: 0;
 }
 
-
-li{
+li {
   color: #000;
 }
-ul{
+
+ul {
   margin: 0;
 }
-.chat-msg {
-  max-width: 90%;
-  padding: 14px 18px;
-  font-size: 15px;
-  line-height: 1.6;
-  border-radius: 20px;
-  word-wrap: break-word;
 
-  /* Add these 👇 */
-  overflow-wrap: break-word;     /* break long words */
-  word-break: break-word;        /* break long strings like links */
-  white-space: pre-wrap;         /* preserves line breaks but wraps */
-}
-
-
-.chat-msg.user {
-  align-self: flex-end;
-  background: #f3f4f6;
-  color: #111;
-}
-
-.chat-msg.bot {
-  align-self: flex-start;
-  background: transparent;
-  color: #0c4a6e;
-}
-
-.bard-msg {
-  max-width: 60%;
-  padding: 14px 18px;
-  font-size: 15px;
-  line-height: 1.6;
-  border-radius: 20px;
-  word-wrap: break-word;
-}
-
-.bard-user {
-  align-self: flex-end;
-  background: #f3f4f6;
-  color: #111;
-}
-
-.bard-bot {
-  align-self: flex-start;
-  background: #eef6ff;
-  color: #0c4a6e;
-}
-
-.bard-input-section {
-  position: sticky;
-  bottom: 0;
-  background: #fff;
-  padding: 16px 32px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-top: 1px solid #eee;
-}
-
-.bard-input-section input {
-  flex: 1;
-  padding: 12px 16px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 24px;
-  outline: none;
-}
-
-.bard-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.tool-icon {
-  font-size: 13px;
-  color: #555;
-  margin-right: 10px;
-}
-
-.icon-btn {
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.input-icons button {
-    background: transparent !important;
-}
-
-
-/* THINKING DOT */
-
+/* Loading Animation */
 .dot-loader {
   width: 10px;
   height: 10px;
@@ -287,112 +207,106 @@ ul{
   }
 }
 
-
-.bard-msg {
-  max-width: 60%;
-  padding: 14px 18px;
-  font-size: 15px;
-  line-height: 1.6;
-  border-radius: 20px;
-  word-wrap: break-word;
-}
-
-.bard-user {
-  align-self: flex-end;
-  background: #f3f4f6;
-  color: #111;
-}
-
-.bard-bot {
-  align-self: flex-start;
-  background: #eef6ff;
-  color: #0c4a6e;
-}
-
-.bard-input-section {
-  position: sticky;
-  bottom: 0;
-  background: #fff;
-  padding: 16px 32px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-top: 1px solid #eee;
-}
-
-.bard-input-section input {
-  flex: 1;
-  padding: 12px 16px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 24px;
-  outline: none;
-}
-
-.bard-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.tool-icon {
-  font-size: 13px;
-  color: #555;
-  margin-right: 10px;
-}
-
-.icon-btn {
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.input-icons button {
-    background: transparent !important;
-}
-
-
-/* THINKING DOT */
-
-.dot-loader {
-  width: 10px;
-  height: 10px;
-  background-color: #000;
-  border-radius: 50%;
-  display: inline-block;
-  animation: dot-blink 1s infinite ease-in-out;
-}
-
-@keyframes dot-blink {
-  0%, 100% {
-    opacity: 0.2;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-
-.chat-msg .bot{
-  background-color: transparent !important;
-}
-
-
-
-@media (max-width:600px){
-
-.intro-text {
+/* Mobile Responsive Styles */
+@media (max-width: 600px) {
+  .intro-text {
     text-align: center;
+    font-size: 20px;
+    padding: 0 20px;
+  }
+
+  .input-bar {
+    width: 90%;
+    max-width: 350px;
+    margin: 0 auto 20px;
+  }
+
+  .input-icons {
+    display: flex !important;
+    gap: 10px;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  .input-icons button {
+    background: transparent !important;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: #007bff;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+
+  .input-icons button:hover {
+    background: rgba(0, 123, 255, 0.1) !important;
+    border-radius: 50%;
+  }
+
+  .input-icons button:active {
+    background: rgba(0, 123, 255, 0.2) !important;
+  }
+
+  /* Ensure Font Awesome icons are visible */
+  .input-icons button i {
+    font-size: 16px;
+    display: inline-block !important;
+    visibility: visible !important;
+  }
+
+  .input-icons i {
+    font-size: 16px;
+    display: inline-block !important;
+    visibility: visible !important;
+  }
+
+  /* Fallback for Font Awesome icons */
+  .input-icons button i:before {
+    content: "➤";
+    font-family: Arial, sans-serif;
+  }
+
+  .input-icons button i.fa-paper-plane:before {
+    content: "➤";
+  }
+
+  .example-question {
+    text-align: center;
+    margin-top: 15px;
+    padding: 0 15px;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .chat-msg {
+    max-width: 95%;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .chat-body {
+    padding: 20px 10px;
+  }
+
+  .intro-screen {
+    padding: 20px 10px;
+  }
 }
 
-.input-icons button {
-    margin-left: 40px;
-}
-.input-bar {
-    width: 250px;
-}
+@media (max-width: 480px) {
+  .input-bar {
+    width: 95%;
+    max-width: 320px;
+  }
 
+  .example-question {
+    font-size: 12px;
+    padding: 0 10px;
+  }
 }

@@ -1,7 +1,7 @@
 // API Configuration
 const API_CONFIG = {
-  // BASE_URL: "https://reactflaskchatbot.vercel.app/",
-  BASE_URL: "http://127.0.0.1:5000",
+  BASE_URL: "https://reactflaskchatbot.vercel.app/",
+  // BASE_URL: "http://127.0.0.1:5000",
   HEADERS: {
     "Content-Type": "application/json",
   },

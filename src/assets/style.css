@@ -107,7 +107,11 @@ height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
   background: #fff;
+  width: 100%;
+  max-width: 100vw;
 }
+
+
 body {
     margin: 0;
     display: flex;
@@ -130,7 +134,8 @@ body {
   border: 1px solid #ccc;
   border-radius: 32px;
   padding: 8px 12px;
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   box-shadow: 0 2px 12px rgba(0,0,0,0.05);
   margin: 0 auto 30px;
 }
@@ -382,7 +387,7 @@ ul{
 
 
 
-@media (max-width:600px){
+/* @media (max-width:600px){
 
 .intro-text {
     text-align: center;
@@ -391,12 +396,28 @@ ul{
 .input-icons button {
     margin-left: 40px;
 }
-.input-bar {
-    width: 250px;
-}
 
 .chat-screen {
   width: 320px;
 }
 
+} */
+
+@media (max-width: 600px) {
+  .input-bar {
+    width: 90%;
+    margin: 0 auto 20px;
+  }
+
+  .chat-screen {
+    width: 100%;
+    padding: 0;
+  }
+
+  .input-icons button {
+    margin-left: 0;
+  }
+  .intro-text {
+    text-align: center;
+}
 }
